@@ -1,0 +1,46 @@
+# ===== Java / Maven =====
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# ===== Spring Boot =====
+*.pid
+*.seed
+*.pid.lock
+
+# ===== Environment / Secrets =====
+.env
+local.env
+*.env
+
+# ===== Docker =====
+mysql_data/
+docker-data/
+*.tar
+
+# ===== IDE: Eclipse =====
+.metadata/
+.project
+.classpath
+.settings/
+
+# ===== IDE: IntelliJ =====
+.idea/
+*.iml
+
+# ===== IDE: VSCode =====
+.vscode/
+
+# ===== OS files =====
+.DS_Store
+Thumbs.db
+
+# ===== Node / misc (sometimes appears in fullstack projects) =====
+node_modules/
+
+# ===== Logs =====
+logs/
+*.log

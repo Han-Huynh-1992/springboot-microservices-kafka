@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Order Confirmation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #f4f4f0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-size: 15px;
+            color: #1a1a2e;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .wrapper {
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 580px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e0ddd6;
+        }
+
+        /* ── Header ── */
+        .header {
+            background-color: #1a1a2e;
+            padding: 32px 40px 28px;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-logo {
+            width: 32px;
+            height: 32px;
+            background: #ffffff;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-name {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .header-subtitle {
+            color: #a0a8c8;
+            font-size: 13px;
+            margin-top: 12px;
+        }
+
+        /* ── Body ── */
+        .body {
+            padding: 36px 40px 0;
+        }
+
+        .badge-success {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #eaf3de;
+            border-radius: 20px;
+            padding: 6px 14px;
+            margin-bottom: 24px;
+        }
+
+        .badge-success span {
+            color: #3B6D11;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .greeting {
+            font-size: 22px;
+            font-weight: 500;
+            color: #1a1a2e;
+            margin-bottom: 6px;
+        }
+
+        .greeting-sub {
+            font-size: 15px;
+            color: #666666;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        /* ── Order Summary ── */
+        .order-box {
+            margin: 0 40px;
+            background: #f8f8f5;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+        }
+
+        .order-id-row td {
+            padding: 0 0 14px 0;
+            vertical-align: middle;
+        }
+
+        .order-id-label {
+            font-size: 12px;
+            color: #888;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .order-id-value {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1a1a2e;
+            font-family: monospace;
+        }
+
+        .item-row td {
+            padding: 10px 0;
+            vertical-align: middle;
+        }
+
+        .item-name {
+            font-size: 14px;
+            color: #555555;
+        }
+
+        .item-price {
+            font-size: 14px;
+            color: #1a1a2e;
+            white-space: nowrap;
+            margin-left: 16px;
+        }
+
+        .total-row td {
+            padding-top: 14px;
+            vertical-align: middle;
+        }
+
+        .total-label {
+            font-size: 15px;
+            font-weight: 500;
+            color: #1a1a2e;
+        }
+
+        .total-value {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1a1a2e;
+        }
+
+        /* ── Info Banner ── */
+        .info-banner {
+            margin: 0 40px 36px;
+            background: #e6f1fb;
+            border-radius: 8px;
+            padding: 16px 20px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .info-banner p {
+            font-size: 13px;
+            color: #185FA5;
+            line-height: 1.6;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            border-top: 1px solid #e0ddd6;
+            padding: 24px 40px;
+            background: #fafaf8;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td style="vertical-align: middle;">
+                        <div class="header-logo">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                 stroke="#1a1a2e" stroke-width="2.5">
+                                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                                <line x1="3" y1="6" x2="21" y2="6"/>
+                                <path d="M16 10a4 4 0 01-8 0"/>
+                            </svg>
+                        </div>
+                    </td>
+                    <td style="vertical-align: middle; padding-left: 10px;">
+                        <span class="header-name">Han Huynh</span>
+                    </td>
+                </tr>
+            </table>
+            <p class="header-subtitle">Order Confirmation</p>
+        </div>
+
+        <!-- Body -->
+        <div class="body">
+            <div class="badge-success">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                     stroke="#3B6D11" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                <span>Order placed successfully</span>
+            </div>
+
+            <h1 class="greeting">Dear <span th:text="${customerName}">Customer</span>,</h1>
+            <p class="greeting-sub">Thank you for your order. Here's a summary of what you purchased.</p>
+        </div>
+
+        <!-- Order Summary Box -->
+        <div class="order-box">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+
+                <!-- Order ID row -->
+                <tr class="order-id-row">
+                    <td class="order-id-label">Order Number</td>
+                    <td align="right" class="order-id-value"
+                        th:text="'#' + ${orderNumber}">#orderNumber</td>
+                </tr>
+
+                <!-- Divider -->
+                <tr>
+                    <td colspan="2" style="padding: 0; height: 1px; background-color: #e0ddd6;"></td>
+                </tr>
+
+                <!-- Items loop -->
+                <tr th:each="item : ${items}" class="item-row">
+                    <td class="item-name" th:text="${item.productName}">${item.productName}</td>
+                    <td align="right" class="item-price"
+                        th:text="${item.quantity} + ' × ' + '$' + ${#numbers.formatDecimal(item.price, 0, 'COMMA', 0, 'POINT')}">
+                        ${item.quantity} × $ ${item.price}
+                    </td>
+                </tr>
+
+                <!-- Divider -->
+                <tr>
+                    <td colspan="2" style="padding: 0; height: 1px; background-color: #e0ddd6;"></td>
+                </tr>
+
+                <!-- Total row -->
+                <tr class="total-row">
+                    <td class="total-label">Total Amount</td>
+                    <td align="right" class="total-value"
+                        th:text="'$'+ ${#numbers.formatDecimal(totalAmount, 0, 'COMMA', 0, 'POINT')}">
+                        $ ${totalAmount}
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+        <!-- Info Banner -->
+        <div class="info-banner">
+            <svg style="flex-shrink:0; margin-top:1px;" width="16" height="16"
+                 viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <p>Your order is being processed. You will receive a shipment confirmation
+                email once your order is on its way.</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td style="font-size: 12px; color: #aaaaaa;">© 2026 Han Huynh. All rights reserved.</td>
+                    <td align="right" style="font-size: 12px; color: #aaaaaa;">Ho Chi Minh City, Vietnam</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

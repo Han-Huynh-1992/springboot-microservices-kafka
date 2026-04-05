@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Shipment Notification</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #f4f4f0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-size: 15px;
+            color: #1a1a2e;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .wrapper { padding: 40px 20px; }
+
+        .container {
+            max-width: 580px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e0ddd6;
+        }
+
+        /* ── Header ── */
+        .header {
+            background-color: #0f3460;
+            padding: 32px 40px 28px;
+        }
+
+        .header-logo {
+            width: 32px;
+            height: 32px;
+            background: #ffffff;
+            border-radius: 6px;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            line-height: 32px;
+        }
+
+        .header-name {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            vertical-align: middle;
+            padding-left: 10px;
+        }
+
+        .header-subtitle {
+            color: #8aaed4;
+            font-size: 13px;
+            margin-top: 12px;
+        }
+
+        /* ── Body ── */
+        .body { padding: 36px 40px 0; }
+
+        .badge-info {
+            display: inline-block;
+            background: #eaf3de;
+            border-radius: 20px;
+            padding: 6px 14px;
+            margin-bottom: 24px;
+        }
+
+        .badge-info span {
+            color: #3B6D11;
+            font-size: 13px;
+            font-weight: 500;
+            vertical-align: middle;
+            padding-left: 6px;
+        }
+
+        .greeting {
+            font-size: 22px;
+            font-weight: 500;
+            color: #1a1a2e;
+            margin-bottom: 6px;
+        }
+
+        .greeting-sub {
+            font-size: 15px;
+            color: #666666;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        /* ── Shipment Box ── */
+        .shipment-box {
+            margin: 0 40px 24px;
+            background: #f8f8f5;
+            border-radius: 8px;
+            padding: 20px 24px;
+        }
+
+        .row-label {
+            font-size: 13px;
+            color: #888;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 10px 0 4px;
+        }
+
+        .row-value {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1a1a2e;
+        }
+
+        .row-value-mono {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1a1a2e;
+            font-family: monospace;
+        }
+
+        .delivery-date {
+            font-size: 20px;
+            font-weight: 500;
+            color: #0f3460;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #e0ddd6;
+            margin: 4px 0;
+        }
+
+        /* ── Info Banner ── */
+        .info-banner {
+            margin: 0 40px 36px;
+            background: #e6f1fb;
+            border-radius: 8px;
+            padding: 16px 20px;
+        }
+
+        .info-banner p {
+            font-size: 13px;
+            color: #185FA5;
+            line-height: 1.6;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            border-top: 1px solid #e0ddd6;
+            padding: 24px 40px;
+            background: #fafaf8;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td style="vertical-align: middle;">
+                        <div class="header-logo">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                 stroke="#0f3460" stroke-width="2.5">
+                                <rect x="1" y="3" width="15" height="13" rx="1"/>
+                                <path d="M16 8h4l3 5v3h-7V8z"/>
+                                <circle cx="5.5" cy="18.5" r="2.5"/>
+                                <circle cx="18.5" cy="18.5" r="2.5"/>
+                            </svg>
+                        </div>
+                    </td>
+                    <td style="vertical-align: middle; padding-left: 10px;">
+                        <span class="header-name">Han Huynh</span>
+                    </td>
+                </tr>
+            </table>
+            <p class="header-subtitle">Shipment Notification</p>
+        </div>
+
+        <!-- Body -->
+        <div class="body">
+            <div class="badge-info">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                     stroke="#3B6D11" stroke-width="2.5" style="vertical-align: middle;">
+                    <rect x="1" y="3" width="15" height="13" rx="1"/>
+                    <path d="M16 8h4l3 5v3h-7V8z"/>
+                    <circle cx="5.5" cy="18.5" r="2.5"/>
+                    <circle cx="18.5" cy="18.5" r="2.5"/>
+                </svg>
+                <span>Your shipment is on its way</span>
+            </div>
+
+            <h1 class="greeting">Dear <span th:text="${customerName}">${customerName}</span>,</h1>
+            <p class="greeting-sub">Great news! Your order has been processed and a shipment has been created.</p>
+        </div>
+
+        <!-- Shipment Detail Box -->
+        <div class="shipment-box">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+
+                <tr>
+                    <td class="row-label">Order Number</td>
+                </tr>
+                <tr>
+                    <td class="row-value-mono" th:text="'#' + ${orderNumber}">#orderNumber</td>
+                </tr>
+
+                <tr><td class="divider"></td></tr>
+
+                <tr>
+                    <td class="row-label">Shipment ID</td>
+                </tr>
+                <tr>
+                    <td class="row-value-mono" th:text="'#' + ${shipmentId}">#shipmentId</td>
+                </tr>
+
+                <tr><td class="divider"></td></tr>
+
+                <tr>
+                    <td class="row-label">Shipping Address</td>
+                </tr>
+                <tr>
+                    <td class="row-value" th:text="${shippingAddress}">${shippingAddress}</td>
+                </tr>
+
+                <tr><td class="divider"></td></tr>
+
+                <tr>
+                    <td class="row-label">Estimated Delivery Date</td>
+                </tr>
+                <tr>
+                    <td class="delivery-date"
+                        th:text="${#dates.format(estimatedDeliveryDate, 'dd MMM yyyy')}">
+                        ${estimatedDeliveryDate}
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+        <!-- Info Banner -->
+        <div class="info-banner">
+			<p>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                     stroke="#185FA5" stroke-width="2" style="vertical-align: middle;">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Your order will be delivered by <strong
+                    th:text="${#dates.format(estimatedDeliveryDate, 'dd MMM yyyy')}">${estimatedDeliveryDate}</strong>.
+                We will notify you once it has been shipped.
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td style="font-size: 12px; color: #aaaaaa;">© 2024 Han Huynh. All rights reserved.</td>
+                    <td align="right" style="font-size: 12px; color: #aaaaaa;">Ho Chi Minh City, Vietnam</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
