@@ -11,11 +11,6 @@ target/
 *.seed
 *.pid.lock
 
-# ===== Environment / Secrets =====
-.env
-local.env
-*.env
-
 # ===== Docker =====
 mysql_data/
 docker-data/
