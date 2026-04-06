@@ -1,4 +1,4 @@
-## Spring Boot Kafka Microservices Order Processing System
+# Spring Boot Kafka Microservices Order Processing System
 
 This project demonstrates a microservices architecture built with Spring Boot and Apache Kafka, containerized using Docker Compose for easy local deployment.
 
@@ -19,13 +19,13 @@ After the shipment record is successfully created and stored in the database, th
 ### Kafka Broker | Message Broker
 Kafka receives events from the producer and distributes them to all consumers subscribed to the topic.
 
-## How to run the app locally
+# How to run the app locally
   1. Install Docker Desktop
   2. Clone the repository on master branch
   3. To start the application, from the root directory of the project, run: "docker compose --env-file local.env up --build" command
   4. Navigate to Postman tool, the Order API will be at "POST localhost:8080/order/create" to create an order, you can use JSON sample (orderData.txt) to add data on "Body" tab
 
-## Application Flow
+# Application Flow
   #### 1. Order Creation
   + When a new order is created, the OrderService stores the order in the database and publishes an OrderCreatedEvent to the Kafka broker.
   #### 2. Kafka Event Distribution
