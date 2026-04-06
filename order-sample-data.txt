@@ -1,0 +1,22 @@
+### Please add your real email on 'customerEmail' field
+
+{
+    "customerId": "CUST-001",
+    "customerName": "Customer 1",
+    "customerEmail": "yourEmail@gmail.com",
+    "customerAddress": "100 Hadfield, Beach Haven, Auckland, New Zealand",
+    "items": [
+        {
+            "productId": "PROD-001",
+            "productName": "Laptop Dell XPS 15",
+            "quantity": 1,
+            "price": 2500
+        },
+        {
+            "productId": "PROD-002",
+            "productName": "Computer Mouse Logitech MX Master 3",
+            "quantity": 2,
+            "price": 50
+        }
+    ]
+}
