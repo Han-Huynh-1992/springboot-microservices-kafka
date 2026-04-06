@@ -1,4 +1,4 @@
-# Spring Boot Kafka Microservices Order Processing System
+# Distributed Event-Driven Ordering Backend System - Spring Boot, Kafka
 
 This project demonstrates a microservices architecture built with Spring Boot and Apache Kafka, containerized using Docker Compose for easy local deployment.
 
