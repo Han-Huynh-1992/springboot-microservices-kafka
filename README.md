@@ -23,7 +23,7 @@ Kafka receives events from the producer and distributes them to all consumers su
   1. Install Docker Desktop
   2. Clone the repository on master branch
   3. To start the application, from the root directory of the project, run: "docker compose --env-file local.env up --build" command
-  4. Navigate to Postman tool, the Order API will be at "POST localhost:8080/order/create" to create an order, you can use JSON sample (orderData.txt) to add data on "Body" tab
+  4. Navigate to Postman tool, the Order API will be at "POST localhost:8080/order/create" to create an order, you can use JSON sample (order-sample-data.txt) to add data on "Body" tab
 
 # Application Flow
   #### 1. Order Creation
